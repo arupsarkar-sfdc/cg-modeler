@@ -1,0 +1,7 @@
+/appl
+.modeler-workspace
+/.vscode
+/contractSnippets
+.DS_Store
+*diagnosis.json
+```
