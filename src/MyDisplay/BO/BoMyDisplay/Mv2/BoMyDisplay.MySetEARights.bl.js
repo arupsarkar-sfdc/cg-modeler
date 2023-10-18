@@ -25,16 +25,12 @@
  * -> extends: Base class of the LO, BO, and LU objects that this function belongs to.
  * -> maxRuntime: Maximum time this function is allowed to run, takes integer value in ms. If the max time is exceeded, error is logged.
  * -> returns: Type and variable name in which the return value is stored.
- * @function afterLoadAsync
+ * @function mySetEARights
  * @this BoMyDisplay
  * @kind businessobject
- * @async
  * @namespace CUSTOM
- * @param {Object} result
- * @param {Object} context
- * @returns promise
  */
-function afterLoadAsync(result, context){
+function mySetEARights(){
     var me = this;
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
@@ -43,8 +39,17 @@ function afterLoadAsync(result, context){
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
     
-    var promise=when.resolve(result);
-    me.mySetEARights();   
+    
+    var acl = me.getACL();
+    acl.removeRight(AclObjectType.PROPERTY, "competitorDisplay", AclPermission.EDIT);		
+    if (Utils.isTrue(me.getCompetitorDisplay())) {
+        acl.setAce({
+        "objectType" : AclObjectType.OBJECT,
+        "objectName" : "BoMyDisplay",
+        "rights" : AclPermission.EDIT,
+        "grant" : false
+        });
+    }   
   
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
@@ -52,5 +57,5 @@ function afterLoadAsync(result, context){
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    return promise;
+    
 }
