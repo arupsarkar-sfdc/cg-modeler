@@ -45,6 +45,7 @@
           <Event name="CardUserWelcome_loadData" action="CardUserWelcome_loadData" />
           <!-- Card: Display -->
           <Event name="CardDisplay_loadData" action="CardDisplay_loadData" />          
+          <Event name="CardDisplay_showAllDisplays" action="CardDisplay_loadDisplayDetails" />                    
           <!-- Card: Activities -->
           <Event name="CardActivities_loadData" action="CardActivities_LoadActivities" />
           <Event name="CardActivities_ShowAllActivitiesPressed" action="CardActivities_ShowAllActivities" />   
@@ -106,7 +107,9 @@
 
       <Action name="CardDisplay_reduceListItems" actionType="LOGIC" call="ProcessContext::CardDisplay_DisplayList.myReduceNumberOfListItems"> 
         <TransitionTo action="CardDisplay_setSubcomponentName"/>
-      </Action>                      
+      </Action>
+      <Action name="CardDisplay_loadDisplayDetails" actionType="PROCESS" process="MyDisplay::DisplayDetailsProcess"> 
+      </Action>                            
       <!-- Card: Display  END-->      
 
       <!-- Card: Activities START -->
