@@ -37,7 +37,8 @@ function myReduceNumberOfListItems(){
     //               Add your customizing javaScript code below.                                 //
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
-  // determine the max number of list items to show in card (depending on form factor)
+  
+    // determine the max number of list items to show in card (depending on form factor)
   var limitDueToFormFactor = Utils.isPhone() ? 3 : 5;
   AppLog.info("limitDueToFormFactor:MyReduceNumberOfListItems - " + limitDueToFormFactor);
   // get all items as array

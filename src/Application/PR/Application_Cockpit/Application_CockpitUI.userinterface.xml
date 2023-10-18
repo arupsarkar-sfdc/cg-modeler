@@ -111,10 +111,10 @@
         <!-- User Welcome Card END -->
 
 
-        <!-- Display Card START-->
+        <!-- Display Card START Day 2-->
         <CardContainer name="DisplayCard">
           <Bindings>
-            <!-- Title and counter -->
+            <!-- Title and counter  -->
             <Resource target="Title" type="Label" id="DisplayCardTitle" defaultLabel="Displays" />
             <!-- <Resource target="Information" type="Label" id="DisplayCardInfo" defaultLabel="Info / Counter" /> -->
             <Binding target="Information" type="Text" binding="ProcessContext::CardDisplay_InformationText" bindingMode="ONE_WAY" />            
@@ -123,6 +123,7 @@
             <!-- Subcomponent (e.g. used for no data message) -->
             <Binding target="DisplayedSubcomponentName" type="Text" binding="ProcessContext::CardDisplay_SubComponentName" bindingMode="ONE_WAY" />
             <!-- Defines id card is collapsible -->
+
             <Binding type="Text" target="IsCollapsible" call="ProcessContext::CardController.isCardCollapsible" bindingMode="ONE_WAY">
               <Parameters>
                 <Input name="cardName" type="Literal" value="CardDisplay" />
@@ -133,6 +134,7 @@
           <VisibilityRoles allRoles="true" />
           <Events>
             <LoadContainerData event="CardDisplay_loadData" />
+            
           </Events>
 
           <!-- No Data Message Subcomponent -->
@@ -143,6 +145,7 @@
               <Resource target="infoIcon" type="Image" id="Done" />
             </Bindings>
           </NoDataMessage>
+          
           <CockpitList name="Display" hasBorder="false" dataSource="ProcessContext::CardDisplay_DisplayList.Items[]">
             <Items name="Items" itemPattern="CardDisplayItems">
               <ItemListLayout>

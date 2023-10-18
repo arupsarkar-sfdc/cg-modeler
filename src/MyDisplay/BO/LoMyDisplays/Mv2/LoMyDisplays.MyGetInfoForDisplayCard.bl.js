@@ -32,12 +32,14 @@
  * @returns info
  */
 function myGetInfoForDisplayCard(){
+   
     var me = this;
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
     //               Add your customizing javaScript code below.                                 //
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
+    
     
     // determine the max number of list items to show in card (depending on form factor)
     var limitDueToFormFactor = Utils.isPhone() ? 3 : 5;
