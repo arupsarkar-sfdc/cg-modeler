@@ -55,7 +55,7 @@ switch (cardName){
   case "CardUserWelcome": 
     collapsible = true;
     break;
-
+  // added for collapsible card
   case "CardDisplay":
     collapsible = true;
     break;
