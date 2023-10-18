@@ -41,10 +41,10 @@ function beforeSaveAsync(context){
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
-    
+    AppLog.log("BoMyDisplay.BeforeSaveAsync", "Start");
     // var promise=when.resolve(context);
     var promise=Facade.saveObjectAsync(me);		
-   
+    AppLog.log("BoMyDisplay.BeforeSaveAsync", "End");   
   
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //

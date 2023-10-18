@@ -45,7 +45,8 @@
           <Event name="CardUserWelcome_loadData" action="CardUserWelcome_loadData" />
           <!-- Card: Display -->
           <Event name="CardDisplay_loadData" action="CardDisplay_loadData" />          
-          <Event name="CardDisplay_showAllDisplays" action="CardDisplay_loadDisplayDetails" />                    
+          <Event name="CardDisplay_showAllDisplays" action="CardDisplay_loadDisplayDetails" />
+          <Event name="CardDisplay_itemSelected" action="CardDisplay_showSelectedDisplayDetails" />                              
           <!-- Card: Activities -->
           <Event name="CardActivities_loadData" action="CardActivities_LoadActivities" />
           <Event name="CardActivities_ShowAllActivitiesPressed" action="CardActivities_ShowAllActivities" />   
@@ -109,7 +110,13 @@
         <TransitionTo action="CardDisplay_setSubcomponentName"/>
       </Action>
       <Action name="CardDisplay_loadDisplayDetails" actionType="PROCESS" process="MyDisplay::DisplayDetailsProcess"> 
-      </Action>                            
+      </Action>   
+      <Action name="CardDisplay_showSelectedDisplayDetails" actionType="PROCESS" process="MyDisplay::DisplayDetailsProcess">  
+        <Parameters>
+          <Input name="DisplayPKey" value="Event.pKey" />
+          <Input name="Mode" type="Literal" value="Cockpit" /> 
+        </Parameters>
+      </Action>                               
       <!-- Card: Display  END-->      
 
       <!-- Card: Activities START -->

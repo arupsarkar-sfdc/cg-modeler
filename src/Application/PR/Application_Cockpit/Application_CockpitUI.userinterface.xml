@@ -170,6 +170,13 @@
                 <Binding target="Icon" type="Image" binding=".iconId" bindingMode="ONE_WAY" />
               </Bindings>
             </Items>
+            <Events>
+              <ItemSelectedEvent event="CardDisplay_itemSelected">
+                <Params>
+                  <Param name="pKey" value=".pKey" />
+                </Params>
+              </ItemSelectedEvent>
+            </Events>            
           </CockpitList>
           <LinkBar>
             <ImageButton name="ShowAllDisplaysButton">
