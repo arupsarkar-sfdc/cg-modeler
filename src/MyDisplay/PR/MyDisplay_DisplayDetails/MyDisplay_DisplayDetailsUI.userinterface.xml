@@ -7,7 +7,7 @@
       </PageHeader>
       <Section sectionName="masterSection" sectionPattern="SingleAreaSection">
         <Area areaName="mainArea" areaPattern="SingleElementArea">
-          <GroupedList name="displayList" master="true" dataSource="ProcessContext::DisplayList.items[]">
+          <GroupedList name="displayList" master="true" dataSource="ProcessContext::DisplayList.items[]" searchable="true" indexBar="true">
             <Items name="Items" itemPattern="displayDetailsDisplayListItems">
                 <ItemListLayout>
                     <Tablet>
@@ -40,7 +40,11 @@
                     <Param name="pKey" value=".pKey" />
                   </Params>
                 </ItemSelectedEvent>
-              </Events>            
+              </Events>   
+              <SearchAttributes>
+                  <SearchAttribute name="Name"/>        
+              </SearchAttributes> 
+              
           </GroupedList>
         </Area>
       </Section>
