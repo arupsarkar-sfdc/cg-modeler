@@ -25,16 +25,13 @@
  * -> extends: Base class of the LO, BO, and LU objects that this function belongs to.
  * -> maxRuntime: Maximum time this function is allowed to run, takes integer value in ms. If the max time is exceeded, error is logged.
  * -> returns: Type and variable name in which the return value is stored.
- * @function afterCreateAsync
- * @this BoMyDisplay
- * @kind businessobject
- * @async
+ * @function myAddItem
+ * @this LoMyDisplays
+ * @kind listobject
  * @namespace CUSTOM
- * @param {Object} result
- * @param {Object} context
- * @returns promise
+ * @param {BoMyDisplay} newDisplayDetail
  */
-function afterCreateAsync(result, context){
+function myAddItem(newDisplayDetail){
     var me = this;
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
@@ -42,14 +39,26 @@ function afterCreateAsync(result, context){
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
-    var promise=when.resolve(result);
-    me.setObjectStatus(STATE.NEW | STATE.DIRTY);
-    me.mySetEARights();
+    let iconId='Shelf_Lime';
+    if (Utils.isTrue(newDisplayDetail.getCompetitorDisplay())) iconId='Shelf_Dark_Orange';
+    var liMyNewDisplay ={
+        pKey: newDisplayDetail.getPKey(),
+        name: newDisplayDetail.getName(),
+        description: newDisplayDetail.getDescription(),
+        competitorDisplay: newDisplayDetail.getCompetitorDisplay(),
+        iconId: iconId,
+    }
+    me.addListItems([liMyNewDisplay]);
+    me.setCurrentByPKey(liMyNewDisplay.getPKey());    
+    
+		
+   
+  
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
     //               Add your customizing javaScript code above.                                 //
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    return promise;
+    
 }

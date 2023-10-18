@@ -25,16 +25,13 @@
  * -> extends: Base class of the LO, BO, and LU objects that this function belongs to.
  * -> maxRuntime: Maximum time this function is allowed to run, takes integer value in ms. If the max time is exceeded, error is logged.
  * -> returns: Type and variable name in which the return value is stored.
- * @function afterCreateAsync
+ * @function myValidateNameEmpty
  * @this BoMyDisplay
  * @kind businessobject
- * @async
  * @namespace CUSTOM
- * @param {Object} result
- * @param {Object} context
- * @returns promise
+ * @param {messageCollector} messageCollector
  */
-function afterCreateAsync(result, context){
+function myValidateNameEmpty(){
     var me = this;
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
@@ -42,14 +39,22 @@ function afterCreateAsync(result, context){
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
-    var promise=when.resolve(result);
-    me.setObjectStatus(STATE.NEW | STATE.DIRTY);
-    me.mySetEARights();
+    var newError;
+    if(Utils.isEmptyString(me.getName())){
+      newError = {"level": "error",
+                  "objectClass": "BoMyDisplay",
+                  "messageID": "DisplayNameEmpty"};
+      messageCollector.add(newError);
+    }    
+    
+		
+   
+  
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
     //               Add your customizing javaScript code above.                                 //
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    return promise;
+    
 }
