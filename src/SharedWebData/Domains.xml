@@ -2882,6 +2882,12 @@
       <Empty value="" />
     </Initializer>
   </Domain>
+  <Domain name="DomDisplayType" baseType="Toggle" length="255">
+    <Initializer>
+    <Default value="' '" />
+    <Empty value="" />
+    </Initializer>
+  </Domain>  
   <Domain name="DomDistribChannel" baseType="Toggle" length="2">
     <Initializer>
       <Default value="' '" />

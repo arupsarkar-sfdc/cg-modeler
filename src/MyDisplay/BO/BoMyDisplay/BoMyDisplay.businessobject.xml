@@ -5,6 +5,7 @@
     <SimpleProperty name="name" type="DomText" dataSourceProperty="name" />
     <SimpleProperty name="description" type="DomLongDescription" dataSourceProperty="description" />
     <SimpleProperty name="competitorDisplay" type="DomBool" dataSourceProperty="competitorDisplay" />
+    <SimpleProperty name="type" type="DomDisplayType" dataSourceProperty="type"/>    
   </SimpleProperties>
   <NestedObjects></NestedObjects>
   <ObjectLookups></ObjectLookups>

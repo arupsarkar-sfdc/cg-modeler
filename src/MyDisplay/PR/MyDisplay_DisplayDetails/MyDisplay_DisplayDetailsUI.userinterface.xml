@@ -44,7 +44,6 @@
               <SearchAttributes>
                   <SearchAttribute name="Name"/>        
               </SearchAttributes> 
-              
           </GroupedList>
         </Area>
       </Section>
@@ -71,6 +70,19 @@
                 <Bindings>
                   <Resource target="Title" type="Label" id="DisplayDetailTypeGroup" defaultLabel="Type" />
                 </Bindings>
+                <SelectionBox name="Type">
+                  <Bindings>
+                  <Resource target="Label" type="Label" id="DisplayType" defaultLabel="Display Type" />
+                  <Binding target="DataSource" toggleId="DisplayType" bindingMode="TWO_WAY" />
+                  <Binding target="Value" binding="ProcessContext::CurrentDisplay.type" bindingMode="TWO_WAY" />
+                  </Bindings>
+                  <Items>
+                  <Bindings>
+                  <Binding target="ItemValue" type="Text" binding=".id" bindingMode="ONE_WAY" />
+                  <Binding target="ItemText" type="Text" binding=".text" bindingMode="ONE_WAY" />
+                  </Bindings>
+                  </Items>
+                  </SelectionBox>                
                 <CheckBox name="CompetitorDisplay" >
                   <Bindings>
                     <Resource target="Label" type="Label" id="CompetitorDisplayCB" defaultLabel="Competitor Display" />
