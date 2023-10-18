@@ -1,4 +1,5 @@
 <ListObject name="LoMyDisplays" generateLoadMethod="true" schemaVersion="1.1">
+
   <DataSource name="DsLoMyDisplays"/>
   <Item objectClass="LiMyDisplays"/>
   <Methods>
@@ -10,5 +11,6 @@
     <Method name="beforeDoValidateAsync"/>
     <Method name="myGetInfoForDisplayCard"/>
     <Method name="myReduceNumberOfListItems"/>
-  <Method name="myAddItem"/></Methods>
+    <Method name="myAddItem"/>
+</Methods>
 </ListObject>

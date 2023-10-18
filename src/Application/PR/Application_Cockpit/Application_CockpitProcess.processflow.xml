@@ -4,11 +4,13 @@
       <Declarations>
         <!-- Card: User Welcome -->
         <Declaration name="CardUserWelcome_DataLoaded" type="DomBool" />
-        <!-- Card: Display -->
-        <Declaration name="CardDisplay_DisplayList" type="LoMyDisplays"/>        
+
+        <!-- Card: Display Day 2-->
+        <Declaration name="CardDisplay_DisplayList" type="LoMyDisplays"/> 
         <Declaration name="CardDisplay_DataLoaded" type="DomBool"/>
         <Declaration name="CardDisplay_SubComponentName" type="String"/>
-        <Declaration name="CardDisplay_InformationText" type="String" />                
+        <Declaration name="CardDisplay_InformationText" type="String" />   
+                     
         <!-- Card: Activities -->
         <Declaration name="CardActivities_InformationText" type="String" />
         <Declaration name="CardActivities_ActivitiesList" type="LoActivities" />
@@ -77,12 +79,13 @@
       </Action>
       <!-- Card: User Welcome  END-->
 
-      <!-- Card: Display  START-->
+      <!-- Card: Display  START Day 2-->
 
       <Action name="CardDisplay_loadData" actionType="LOAD" type="LoMyDisplays" > 
         <Return name="ProcessContext::CardDisplay_DisplayList" />
         <TransitionTo action="CardDisplay_loadInformationText"/>        
       </Action>
+
       <Action name="CardDisplay_setSubcomponentName" actionType="LOGIC" call="ProcessContext::CardController.getDisplayedSubcomponentName"> 
         <Parameters>
           <Input name="loItems" value="ProcessContext::CardDisplay_DisplayList"/>
@@ -91,6 +94,7 @@
         <Return name="ProcessContext::CardDisplay_SubComponentName" />
         <TransitionTo action="CardDisplay_setDataLoaded"/>
       </Action>
+
       <Action name="CardDisplay_setDataLoaded" actionType="LOGIC" call="Utils.identity"> 
         <Parameters>
           <Input name="value" value="1" type="Literal" />
@@ -102,6 +106,7 @@
           <Input name="loItems" value="ProcessContext::CardDisplay_DisplayList"/>
           <Input name="type" value="Display" type="Literal" />
         </Parameters>
+        
         <Return name="ProcessContext::CardDisplay_InformationText" />
         <TransitionTo action="CardDisplay_reduceListItems"/>        
       </Action>      
