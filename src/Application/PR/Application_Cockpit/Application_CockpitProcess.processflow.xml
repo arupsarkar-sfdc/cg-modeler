@@ -45,9 +45,10 @@
         <Events>
           <!-- Card: User Welcome-->
           <Event name="CardUserWelcome_loadData" action="CardUserWelcome_loadData" />
-          <!-- Card: Display Day 2-->
-          <Event name="CardDisplay_loadData" action="CardDisplay_loadData" />   
-
+          <!-- Card: Display -->
+          <Event name="CardDisplay_loadData" action="CardDisplay_loadData" />          
+          <Event name="CardDisplay_showAllDisplays" action="CardDisplay_loadDisplayDetails" />
+          <Event name="CardDisplay_itemSelected" action="CardDisplay_showSelectedDisplayDetails" />                              
           <!-- Card: Activities -->
           <Event name="CardActivities_loadData" action="CardActivities_LoadActivities" />
           <Event name="CardActivities_ShowAllActivitiesPressed" action="CardActivities_ShowAllActivities" />   
@@ -112,9 +113,16 @@
 
       <Action name="CardDisplay_reduceListItems" actionType="LOGIC" call="ProcessContext::CardDisplay_DisplayList.myReduceNumberOfListItems"> 
         <TransitionTo action="CardDisplay_setSubcomponentName"/>
-        
-      </Action>                      
-      <!-- Card: Display  END Day 2-->      
+      </Action>
+      <Action name="CardDisplay_loadDisplayDetails" actionType="PROCESS" process="MyDisplay::DisplayDetailsProcess"> 
+      </Action>   
+      <Action name="CardDisplay_showSelectedDisplayDetails" actionType="PROCESS" process="MyDisplay::DisplayDetailsProcess">  
+        <Parameters>
+          <Input name="DisplayPKey" value="Event.pKey" />
+          <Input name="Mode" type="Literal" value="Cockpit" /> 
+        </Parameters>
+      </Action>                               
+      <!-- Card: Display  END-->      
 
       <!-- Card: Activities START -->
       <Action name="CardActivities_LoadActivities" actionType="LOGIC" call="ProcessContext::CardActivities_ActivitiesList.getActivitiesForCard">
