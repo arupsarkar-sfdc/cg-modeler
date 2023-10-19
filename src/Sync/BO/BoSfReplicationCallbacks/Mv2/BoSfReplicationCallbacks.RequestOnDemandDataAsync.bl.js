@@ -131,6 +131,13 @@ var loadCustomerSalesFolder = function (result) {
   }
 };
 
+var loadCustomerDisplay = function (result) {
+  idsOfAccountDisplayForSync = me.removeLocalIDs(me.getPropertyValuesFromArray(result.ManagedCustomers, "AccountID"));
+  if (idsOfAccountSalesFolderForSync.length > 0) {
+    request.addRequest('NFT_Display', idsOfAccountDisplayForSync);
+  }
+};
+
 var loadOrgUnitSalesFolder = function (result) {
   idsOfOrgUnitSalesFolderForSync = me.removeLocalIDs(me.getPropertyValuesFromArray(result.OrgUnitSalesFolderForSync, "OrgUnitPKey"));
   if (idsOfOrgUnitSalesFolderForSync.length > 0) {
@@ -247,6 +254,7 @@ if(Utils.isSfBackend()) {
           loadCustomerTaskAttachments(result);    
           promises.push(loadTripListsOfUsers(result));    
           loadCustomerSalesFolder(result);
+          loadCustomerDisplay(result);
           loadOrgUnitSalesFolder(result);    
           loadAttachments(result);
           loadRelevantCustomerContract(result);
