@@ -12,5 +12,5 @@
     <Method name="myGetInfoForDisplayCard"/>
     <Method name="myReduceNumberOfListItems"/>
     <Method name="myAddItem"/>
-</Methods>
+<Method name="myGetCompetitorRate"/></Methods>
 </ListObject>
