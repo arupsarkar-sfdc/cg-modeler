@@ -46,6 +46,7 @@
             <Events>
           <Event name="itemSelected" action="LoadDisplayDetails" />
           <Event name="addDisplay" action="LoadDisplayDetails.create" />
+          <Event name="CustomerLookup" action="OpenCustomerNameLookup" />
         </Events>
       </Action>
       <Action name="LoadDisplayDetails" actionType="MASTER_DETAIL_HANDLER">
@@ -69,6 +70,20 @@
           </Create>
         </DetailObject>
       </Action>
+      <!-- Open a customer lookup to change the assigned Customer-->
+      <Action actionType="PROCESS" name="OpenCustomerNameLookup" process="Customer::LookupProcess">
+        <ReturnValues>
+          <Return name="ProcessContext::CurrentDisplay.customer" value="customerPKey" />
+        </ReturnValues>
+  <TransitionTo
+          action="LoadCustomerLookup" />
+      </Action>
+      <Action actionType="LOAD" name="LoadCustomerLookup" type="LuCustomer">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::CurrentDisplay.customer" />
+        </Parameters>
+        <Return name="ProcessContext::CurrentDisplay.luCustomer" />
+      </Action>      
     </Actions>
   </Body>
 </Process>  
